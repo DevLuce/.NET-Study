@@ -1,0 +1,6 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/BlazorInputFile" Path="/Users/Luce/.nuget/packages/blazorinputfile/0.2.0/build/../staticwebassets/" />
+  <ContentRoot BasePath="/" Path="/Users/Luce/Projects/practice-blazor/CMC_Web/Client/bin/Debug/net5.0/wwwroot/" />
+  <ContentRoot BasePath="/" Path="/Users/Luce/Projects/practice-blazor/CMC_Web/Client/obj/Debug/net5.0/scopedcss/bundle/" />
+  <ContentRoot BasePath="/" Path="/Users/Luce/Projects/practice-blazor/CMC_Web/Client/wwwroot/" />
+</StaticWebAssets>

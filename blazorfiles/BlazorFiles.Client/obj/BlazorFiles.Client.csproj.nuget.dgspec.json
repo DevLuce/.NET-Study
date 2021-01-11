@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/Luce/Projects/practice-blazor/blazorfiles/BlazorFiles.Client/BlazorFiles.Client.csproj": {}
+  },
+  "projects": {
+    "/Users/Luce/Projects/practice-blazor/blazorfiles/BlazorFiles.Client/BlazorFiles.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Luce/Projects/practice-blazor/blazorfiles/BlazorFiles.Client/BlazorFiles.Client.csproj",
+        "projectName": "BlazorFiles.Client",
+        "projectPath": "/Users/Luce/Projects/practice-blazor/blazorfiles/BlazorFiles.Client/BlazorFiles.Client.csproj",
+        "packagesPath": "/Users/Luce/.nuget/packages/",
+        "outputPath": "/Users/Luce/Projects/practice-blazor/blazorfiles/BlazorFiles.Client/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Luce/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.HttpClient": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Tewr.Blazor.FileReader": {
+              "target": "Package",
+              "version": "[1.3.0.20049, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

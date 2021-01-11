@@ -1,0 +1,12 @@
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/bin/Debug/net5.0/CMC_Web.Shared.deps.json
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/bin/Debug/net5.0/CMC_Web.Shared.dll
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/bin/Debug/net5.0/ref/CMC_Web.Shared.dll
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/bin/Debug/net5.0/CMC_Web.Shared.pdb
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.csprojAssemblyReference.cache
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.AssemblyInfoInputs.cache
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.AssemblyInfo.cs
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.csproj.CoreCompileInputs.cache
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.dll
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/ref/CMC_Web.Shared.dll
+/Users/Luce/Projects/practice-blazor/CMC_Web/Shared/obj/Debug/net5.0/CMC_Web.Shared.pdb

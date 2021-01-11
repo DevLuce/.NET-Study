@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/Luce/.dotnet/store/|arch|/|tfm|",
+      "/Users/Luce/.nuget/packages"
+    ]
+  }
+}

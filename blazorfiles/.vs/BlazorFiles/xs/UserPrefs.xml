@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="여러 프로젝트">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlazorFiles.Client/Pages/Index.razor">
+    <Files>
+      <File FileName="BlazorFiles.Api/Program.cs" Line="16" Column="1" />
+      <File FileName="BlazorFiles.Api/Properties/launchSettings.json" Line="24" Column="70" />
+      <File FileName="BlazorFiles.Client/Pages/Index.razor" Line="79" Column="45" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BlazorFiles" expanded="True">
+            <Node name="BlazorFiles.Api" expanded="True">
+              <Node name="wwwroot" expanded="True">
+                <Node name="Images" expanded="True">
+                  <Node name="8e9d05b9-074d-450c-8781-6bfdddcb737b.jpg" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="BlazorFiles.Client" expanded="True">
+              <Node name="Pages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.BlazorFiles.Client PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="여러 프로젝트" Name="여러 프로젝트">
+      <Items>
+        <StartupItem ItemId="{4BCEA325-F632-4794-9EF4-BF96017C753B}" ItemName="BlazorFiles.Api" ConfigurationId="Default" />
+        <StartupItem ItemId="{7A68534E-E56D-481A-B704-EBFFC9836A73}" ItemName="BlazorFiles.Client" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.ItemProperties.BlazorFiles.Api PreferredExecutionTarget="/Applications/Safari.app" />
+</Properties>

@@ -1,0 +1,255 @@
+﻿@page "/"
+@using System.IO
+@using System.Net.Http
+@using System.Net.Http.Json
+@using BlazorInputFile
+@inject HttpClient client
+
+<h1>CMC File Upload Test</h1>
+
+<br>
+
+<h3>xls 파일 업로드</h3>
+<BlazorInputFile.InputFile multiple OnChange="@(e => HandleSelection(files: e, num: 0))"></BlazorInputFile.InputFile>
+<p>@status[0]</p>
+
+<br><br>
+
+<h3>BID 파일 업로드</h3>
+<BlazorInputFile.InputFile OnChange="@(e => HandleSelection(files: e, num: 1))"></BlazorInputFile.InputFile>
+<p>@status[1]</p>
+
+<p></p>
+
+@* @if (todoItems == null)
+{
+    <p>No Todo Items found.</p>
+}
+else
+{
+    @foreach (var item in todoItems.response.body.items)
+    {
+        <p>@item.bidNtceNo</p>
+    }
+} *@
+
+@code{
+    MarkupString[] status = { (MarkupString)$"", (MarkupString)$"" };
+    //string APIKey = "55qUjIXFw%2BGrGdG44Ro8Hrmi4SHf5qpKJpWxtv47WZTXp8hDofXWHHctm8rE1ZUHGNFdY%2FemguVdw3h3PM5Zdg%3D%3D";
+
+    //private Root todoItems;
+
+    //protected override async Task OnInitializedAsync() =>
+     //   todoItems = await
+     //   client.GetFromJsonAsync<Root>("http://apis.data.go.kr/1230000/BidPublicInfoService/getBidPblancListInfoCnstwk?inqryDiv=1&inqryBgnDt=201705010000&inqryEndDt=201705012359&pageNo=1&numOfRows=10&type=json&ServiceKey=" + APIKey);
+
+    async Task HandleSelection(IFileListEntry[] files, int num)
+    {
+        string tmpString = "";
+
+        foreach (var file in files)
+        {
+            string fileName = file.Name;
+            string extension = Path.GetExtension(fileName);
+
+            string[] allowedExtensions = { ".xls", ".BID" };
+
+            if (allowedExtensions[num] != extension)
+            {
+                status[num] = (MarkupString)$"올바른 파일이 아닙니다.<br />";
+                return;
+            }
+
+            var ms = new MemoryStream();
+            await file.Data.CopyToAsync(ms);
+
+            tmpString += $"Upload {file.Size} bytes from {file.Name}. <br />";
+
+            var content = new MultipartFormDataContent
+{
+{new ByteArrayContent(ms.GetBuffer()), "\"upload\"", file.Name }
+};
+            await client.PostAsync("upload", content);
+        }
+
+        status[num] = (MarkupString)tmpString;
+    }
+
+    private class Item    {
+        public string bidNtceNo { get; set; } 
+        public string bidNtceOrd { get; set; } 
+        public string reNtceYn { get; set; } 
+        public string rgstTyNm { get; set; } 
+        public string ntceKindNm { get; set; } 
+        public string intrbidYn { get; set; } 
+        public string bidNtceDt { get; set; } 
+        public string refNo { get; set; } 
+        public string bidNtceNm { get; set; } 
+        public string ntceInsttCd { get; set; } 
+        public string ntceInsttNm { get; set; } 
+        public string dminsttCd { get; set; } 
+        public string dminsttNm { get; set; } 
+        public string bidMethdNm { get; set; } 
+        public string cntrctCnclsMthdNm { get; set; } 
+        public string ntceInsttOfclNm { get; set; } 
+        public string ntceInsttOfclTelNo { get; set; } 
+        public string ntceInsttOfclEmailAdrs { get; set; } 
+        public string exctvNm { get; set; } 
+        public string bidQlfctRgstDt { get; set; } 
+        public string cmmnSpldmdAgrmntRcptdocMethd { get; set; } 
+        public string cmmnSpldmdAgrmntClseDt { get; set; } 
+        public string cmmnSpldmdCorpRgnLmtYn { get; set; } 
+        public string bidBeginDt { get; set; } 
+        public string bidClseDt { get; set; } 
+        public string opengDt { get; set; } 
+        public string ntceSpecDocUrl1 { get; set; } 
+        public string ntceSpecDocUrl2 { get; set; } 
+        public string ntceSpecDocUrl3 { get; set; } 
+        public string ntceSpecDocUrl4 { get; set; } 
+        public string ntceSpecDocUrl5 { get; set; } 
+        public string ntceSpecDocUrl6 { get; set; } 
+        public string ntceSpecDocUrl7 { get; set; } 
+        public string ntceSpecDocUrl8 { get; set; } 
+        public string ntceSpecDocUrl9 { get; set; } 
+        public string ntceSpecDocUrl10 { get; set; } 
+        public string ntceSpecFileNm1 { get; set; } 
+        public string ntceSpecFileNm2 { get; set; } 
+        public string ntceSpecFileNm3 { get; set; } 
+        public string ntceSpecFileNm4 { get; set; } 
+        public string ntceSpecFileNm5 { get; set; } 
+        public string ntceSpecFileNm6 { get; set; } 
+        public string ntceSpecFileNm7 { get; set; } 
+        public string ntceSpecFileNm8 { get; set; } 
+        public string ntceSpecFileNm9 { get; set; } 
+        public string ntceSpecFileNm10 { get; set; } 
+        public string rbidPermsnYn { get; set; } 
+        public string pqApplDocRcptMthdNm { get; set; } 
+        public string pqApplDocRcptDt { get; set; } 
+        public string arsltApplDocRcptMthdNm { get; set; } 
+        public string arsltApplDocRcptDt { get; set; } 
+        public string jntcontrctDutyRgnNm1 { get; set; } 
+        public string jntcontrctDutyRgnNm2 { get; set; } 
+        public string jntcontrctDutyRgnNm3 { get; set; } 
+        public string rgnDutyJntcontrctRt { get; set; } 
+        public string dtlsBidYn { get; set; } 
+        public string bidPrtcptLmtYn { get; set; } 
+        public string prearngPrceDcsnMthdNm { get; set; } 
+        public string totPrdprcNum { get; set; } 
+        public string drwtPrdprcNum { get; set; } 
+        public string bdgtAmt { get; set; } 
+        public string presmptPrce { get; set; } 
+        public string govsplyAmt { get; set; } 
+        public string aplBssCntnts { get; set; } 
+        public string indstrytyEvlRt { get; set; } 
+        public string mainCnsttyNm { get; set; } 
+        public string mainCnsttyCnstwkPrearngAmt { get; set; } 
+        public string incntvRgnNm1 { get; set; } 
+        public string incntvRgnNm2 { get; set; } 
+        public string incntvRgnNm3 { get; set; } 
+        public string incntvRgnNm4 { get; set; } 
+        public string opengPlce { get; set; } 
+        public string dcmtgOprtnDt { get; set; } 
+        public string dcmtgOprtnPlce { get; set; } 
+        public string contrctrcnstrtnGovsplyMtrlAmt { get; set; } 
+        public string govcnstrtnGovsplyMtrlAmt { get; set; } 
+        public string bidNtceDtlUrl { get; set; } 
+        public string bidNtceUrl { get; set; } 
+        public string bidPrtcptFeePaymntYn { get; set; } 
+        public string bidPrtcptFee { get; set; } 
+        public string bidGrntymnyPaymntYn { get; set; } 
+        public string crdtrNm { get; set; } 
+        public string cmmnSpldmdCnum { get; set; } 
+        public string untyNtceNo { get; set; } 
+        public string sptDscrptDocUrl1 { get; set; } 
+        public string sptDscrptDocUrl2 { get; set; } 
+        public string sptDscrptDocUrl3 { get; set; } 
+        public string sptDscrptDocUrl4 { get; set; } 
+        public string sptDscrptDocUrl5 { get; set; } 
+        public string subsiCnsttyNm1 { get; set; } 
+        public string subsiCnsttyNm2 { get; set; } 
+        public string subsiCnsttyNm3 { get; set; } 
+        public string subsiCnsttyNm4 { get; set; } 
+        public string subsiCnsttyNm5 { get; set; } 
+        public string subsiCnsttyNm6 { get; set; } 
+        public string subsiCnsttyNm7 { get; set; } 
+        public string subsiCnsttyNm8 { get; set; } 
+        public string subsiCnsttyNm9 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt1 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt2 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt3 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt4 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt5 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt6 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt7 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt8 { get; set; } 
+        public string subsiCnsttyIndstrytyEvlRt9 { get; set; } 
+        public string cmmnSpldmdMethdCd { get; set; } 
+        public string cmmnSpldmdMethdNm { get; set; } 
+        public string stdNtceDocUrl { get; set; } 
+        public string brffcBidprcPermsnYn { get; set; } 
+        public string cnsttyAccotShreRateList { get; set; } 
+        public string cnstrtnAbltyEvlAmtList { get; set; } 
+        public string dsgntCmptYn { get; set; } 
+        public string arsltCmptYn { get; set; } 
+        public string pqEvalYn { get; set; } 
+        public string ntceDscrptYn { get; set; } 
+        public string rsrvtnPrceReMkngMthdNm { get; set; } 
+        public string mainCnsttyPresmptPrce { get; set; } 
+        public string orderPlanUntyNo { get; set; } 
+        public string sucsfbidLwltRate { get; set; } 
+        public string rgstDt { get; set; } 
+        public string bfSpecRgstNo { get; set; } 
+        public string sucsfbidMthdCd { get; set; } 
+        public string sucsfbidMthdNm { get; set; } 
+        public string chgDt { get; set; } 
+        public string linkInsttNm { get; set; } 
+        public string dminsttOfclEmailAdrs { get; set; } 
+        public string indstrytyLmtYn { get; set; } 
+        public string d2bMngRgnLmtYn { get; set; } 
+        public string d2bMngPblctPlceNm { get; set; } 
+        public string d2bMngCnstwkOutlnCntnts { get; set; } 
+        public string d2bMngCnstwkDivNm { get; set; } 
+        public string d2bMngCnstwkPrdCntnts { get; set; } 
+        public string d2bMngCnstwkScleCntnts { get; set; } 
+        public string d2bMngRsrvtnPrceBssAplYn { get; set; } 
+        public string d2bMngBssamt { get; set; } 
+        public string d2bMngRgstEvalExmpYn { get; set; } 
+        public string d2bMngBfEvalObjYn { get; set; } 
+        public string d2bMngBfEvalClseDt { get; set; } 
+        public string d2bMngAssmntUplmtRt { get; set; } 
+        public string d2bMngAssmntLwstlmtRt { get; set; } 
+        public string d2bMngCnstwkLctNm { get; set; } 
+        public string d2bMngProgrsSttusNm { get; set; } 
+        public string d2bMngNgttnPlanDate { get; set; } 
+        public string d2bMngNgttnStleNm { get; set; } 
+        public string d2bMngDmndYear { get; set; } 
+        public string d2bMngCnstwkNo { get; set; } 
+        public string cnstrtsiteRgnNm { get; set; } 
+        public string rgnDutyJntcontrctYn { get; set; } 
+        public string chgNtceRsn { get; set; } 
+        public string rbidOpengDt { get; set; } 
+    }
+
+    private class Body    {
+        public List<Item> items { get; set; } 
+        public int numOfRows { get; set; } 
+        public int pageNo { get; set; } 
+        public int totalCount { get; set; } 
+    }
+
+    private class Response    {
+        public Body body { get; set; } 
+    }
+
+    private class Root    {
+        public Response response { get; set; } 
+    }
+
+    private class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+    }
+}

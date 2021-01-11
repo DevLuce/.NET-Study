@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{08E6E0FC-AFE2-444C-8D11-ECDB68985611}|Default">
+  <MonoDevelop.Ide.ItemProperties.CMC__Web.Server PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Controllers/UploadController.cs">
+    <Files>
+      <File FileName="Client/Pages/Index.razor" Line="8" Column="30" />
+      <File FileName="Client/wwwroot/index.html" />
+      <File FileName="Server/Controllers/UploadController.cs" Line="17" Column="30" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CMC_Web" expanded="True">
+            <Node name="CMC_Web.Client" expanded="True">
+              <Node name="Pages" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+            <Node name="CMC_Web.Server" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="UploadController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
