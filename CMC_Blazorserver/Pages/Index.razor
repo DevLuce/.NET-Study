@@ -2,40 +2,82 @@
 @using System.IO
 @using Microsoft.AspNetCore.Hosting
 @inject IWebHostEnvironment env
-
-<h1>Blazor Server File Upload</h1>
-
-<h3>@Message</h3>
+@inject IModalService modal
 
 <form @onsubmit="OnSubmit">
-    <InputFile OnChange="OnInputFileChange" multiple />
+    <h1>공내역 BID 파일</h1>
+    <h3>@Message[0]</h3>
+
+    <InputFile OnChange="@(e => OnInputFileChange(e: e, num: 0))" />
     <br /><br />
-    <button type="submit">Upload Selected File(s)</button>
+
+    <h1>조사내역서(.xls)</h1>
+    <h3>@Message[1]</h3>
+    <InputFile OnChange="@(e => OnInputFileChange(e: e, num: 1))" multiple />
+
+    <br /><br />
+    <button type="submit">100% BID파일 생성</button>
+    <h4>@Alert</h4>
 </form>
 
-@code {
-    string Message = "No file(s) selected";
-    IReadOnlyList<IBrowserFile> selectedFiles;
+<br /><br />
+<button class="1" disabled="@IsDisabled" @onclick='@(()=> modal.Show<FetchData>())'>세부내역 확인</button>
+<button class="2" disabled="@IsDisabled" @onclick='@(()=> modal.Show<Counter>())'>보정</button>
+<br /><br />
+<button class="btn btn-primary" disabled="@IsDisabled">등록</button>
 
-    private void OnInputFileChange(InputFileChangeEventArgs e)
+@code {
+    string[] Message = Enumerable.Repeat("No file(s) selected", 2).ToArray();
+    string Alert = "";
+    IReadOnlyList<IBrowserFile>[] selectedFiles = { null, null };
+    protected bool IsDisabled { get; set; } = true;
+
+    private void OnInputFileChange(InputFileChangeEventArgs e, int num)
     {
-        selectedFiles = e.GetMultipleFiles();
-        Message = $"{selectedFiles.Count} file(s) selected";
+        selectedFiles[num] = e.GetMultipleFiles();
+
+        foreach (var file in selectedFiles[num])
+        {
+            string fileName = file.Name;
+            string extension = Path.GetExtension(fileName);
+
+            string[] allowedExtensions = { ".BID", ".xls" };
+
+            if (allowedExtensions[num] != extension)
+            {
+                Message[num] = "올바른 파일이 아닙니다.";
+                return;
+            }
+        }
+        Message[num] = $"{selectedFiles[num].Count} file(s) selected";
         this.StateHasChanged();
     }
 
     private async void OnSubmit()
     {
-        foreach (var file in selectedFiles)
+        for (int i = 0; i < 2; i++)
         {
-            Stream stream = file.OpenReadStream();
-            var path = $"{env.WebRootPath}/{file.Name}";
-            FileStream fs = File.Create(path);
-            await stream.CopyToAsync(fs);
-            stream.Close();
-            fs.Close();
+            if (!selectedFiles.Contains(null))
+            {
+                foreach (var file in selectedFiles[i])
+                {
+                    Stream stream = file.OpenReadStream(maxAllowedSize: 1000000);
+                    var path = $"{env.WebRootPath}/{file.Name}";
+                    FileStream fs = File.Create(path);
+                    await stream.CopyToAsync(fs);
+                    stream.Close();
+                    fs.Close();
+                }
+                Message[i] = $"{selectedFiles[i].Count} file(s) uploaded on server";
+            }
+            else {
+                Alert = "모든 파일을 업로드해주세요";
+                IsDisabled = true;
+                return;
+            }
         }
-        Message = $"{selectedFiles.Count} file(s) uploaded on server";
+        Alert = "생성이 완료되었습니다.";
+        IsDisabled = false;
         this.StateHasChanged();
     }
 }

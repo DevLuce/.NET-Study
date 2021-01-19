@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/Blazored.Modal" Path="/Users/Luce/.nuget/packages/blazored.modal/6.0.1/build/../staticwebassets/" />
   <ContentRoot BasePath="/" Path="/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/obj/Debug/net5.0/scopedcss/bundle/" />
 </StaticWebAssets>

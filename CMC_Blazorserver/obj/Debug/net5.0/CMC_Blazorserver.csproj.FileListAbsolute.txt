@@ -58,3 +58,5 @@
 /Users/Luce/Projects/practice-blazor/CMC_Blazorserver/bin/Debug/net5.0/Microsoft.AspNetCore.Server.Kestrel.Https.dll
 /Users/Luce/Projects/practice-blazor/CMC_Blazorserver/bin/Debug/net5.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
 /Users/Luce/Projects/practice-blazor/CMC_Blazorserver/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/bin/Debug/net5.0/Blazored.Modal.dll
+/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/bin/Debug/net5.0/Microsoft.JSInterop.WebAssembly.dll

@@ -83,6 +83,27 @@ using CMC_Blazorserver.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/Pages/Index.razor"
 using System.IO;
 
@@ -105,36 +126,66 @@ using Microsoft.AspNetCore.Hosting;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 16 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/Pages/Index.razor"
+#line 29 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/Pages/Index.razor"
        
-    string Message = "No file(s) selected";
-    IReadOnlyList<IBrowserFile> selectedFiles;
+    string[] Message = Enumerable.Repeat("No file(s) selected", 2).ToArray();
+    string Alert = "";
+    IReadOnlyList<IBrowserFile>[] selectedFiles = { null, null };
+    protected bool IsDisabled { get; set; } = true;
 
-    private void OnInputFileChange(InputFileChangeEventArgs e)
+    private void OnInputFileChange(InputFileChangeEventArgs e, int num)
     {
-        selectedFiles = e.GetMultipleFiles();
-        Message = $"{selectedFiles.Count} file(s) selected";
+        selectedFiles[num] = e.GetMultipleFiles();
+
+        foreach (var file in selectedFiles[num])
+        {
+            string fileName = file.Name;
+            string extension = Path.GetExtension(fileName);
+
+            string[] allowedExtensions = { ".BID", ".xls" };
+
+            if (allowedExtensions[num] != extension)
+            {
+                Message[num] = "올바른 파일이 아닙니다.";
+                return;
+            }
+        }
+        Message[num] = $"{selectedFiles[num].Count} file(s) selected";
         this.StateHasChanged();
     }
 
     private async void OnSubmit()
     {
-        foreach (var file in selectedFiles)
+        for (int i = 0; i < 2; i++)
         {
-            Stream stream = file.OpenReadStream();
-            var path = $"{env.WebRootPath}/{file.Name}";
-            FileStream fs = File.Create(path);
-            await stream.CopyToAsync(fs);
-            stream.Close();
-            fs.Close();
+            if (!selectedFiles.Contains(null))
+            {
+                foreach (var file in selectedFiles[i])
+                {
+                    Stream stream = file.OpenReadStream(maxAllowedSize: 1000000);
+                    var path = $"{env.WebRootPath}/{file.Name}";
+                    FileStream fs = File.Create(path);
+                    await stream.CopyToAsync(fs);
+                    stream.Close();
+                    fs.Close();
+                }
+                Message[i] = $"{selectedFiles[i].Count} file(s) uploaded on server";
+            }
+            else {
+                Alert = "모든 파일을 업로드해주세요";
+                IsDisabled = true;
+                return;
+            }
         }
-        Message = $"{selectedFiles.Count} file(s) uploaded on server";
+        Alert = "생성이 완료되었습니다.";
+        IsDisabled = false;
         this.StateHasChanged();
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService modal { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IWebHostEnvironment env { get; set; }
     }
 }

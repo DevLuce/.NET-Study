@@ -79,6 +79,27 @@ using CMC_Blazorserver.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "/Users/Luce/Projects/practice-blazor/CMC_Blazorserver/_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
