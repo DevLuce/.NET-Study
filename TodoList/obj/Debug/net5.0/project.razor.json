@@ -111,39 +111,6 @@
         }
       },
       {
-        "HashCode": 1220224215,
-        "Kind": "Components.Component",
-        "Name": "TodoList.Pages.Todo",
-        "AssemblyName": "TodoList",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Todo"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoList.Pages.Todo"
-        }
-      },
-      {
-        "HashCode": 1322792434,
-        "Kind": "Components.Component",
-        "Name": "TodoList.Pages.Todo",
-        "AssemblyName": "TodoList",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoList.Pages.Todo"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoList.Pages.Todo",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1317162030,
         "Kind": "Components.Component",
         "Name": "TodoList.App",
