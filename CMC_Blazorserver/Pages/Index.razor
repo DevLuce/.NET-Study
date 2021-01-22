@@ -21,8 +21,8 @@
 </form>
 
 <br /><br />
-<button class="1" disabled="@IsDisabled" @onclick='@(()=> modal.Show<FetchData>())'>세부내역 확인</button>
-<button class="2" disabled="@IsDisabled" @onclick='@(()=> modal.Show<Counter>())'>보정</button>
+<button disabled="@IsDisabled" @onclick='@(()=> modal.Show<FetchData>())'>세부내역 확인</button>
+<button disabled="@IsDisabled" @onclick='@(()=> modal.Show<Counter>())'>보정</button>
 <br /><br />
 <button class="btn btn-primary" disabled="@IsDisabled">등록</button>
 
@@ -70,7 +70,8 @@
                 }
                 Message[i] = $"{selectedFiles[i].Count} file(s) uploaded on server";
             }
-            else {
+            else
+            {
                 Alert = "모든 파일을 업로드해주세요";
                 IsDisabled = true;
                 return;

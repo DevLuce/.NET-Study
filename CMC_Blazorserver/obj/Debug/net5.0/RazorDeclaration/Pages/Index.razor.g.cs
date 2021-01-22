@@ -171,7 +171,8 @@ using Microsoft.AspNetCore.Hosting;
                 }
                 Message[i] = $"{selectedFiles[i].Count} file(s) uploaded on server";
             }
-            else {
+            else
+            {
                 Alert = "모든 파일을 업로드해주세요";
                 IsDisabled = true;
                 return;
